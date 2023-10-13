@@ -2,15 +2,15 @@ const productForm = document.getElementById("form");
 const productList = document.getElementById("productList");
 const API = "http://localhost:3000/products";
 
-setTimeout(() => {
-  console.log("viec 1");
-}, 3000);
+// setTimeout(() => {
+//   console.log("viec 1");
+// }, 3000);
 
 // console.log("viec 2 cần kết qủa của việc 1 để có thể thực hiện");
 
 // Vấn đề: làm thế nào để việc 2 chờ việc 1 giải quyết xong trước!
 
-const editingProduct = null;
+let editingProduct = null;
 
 const fetchProducts = async () => {
   try {
@@ -19,7 +19,6 @@ const fetchProducts = async () => {
     });
 
     const data = await response.json();
-    console.log(data);
     productList.innerHTML = "";
     data.forEach((product) => {
       const productItem = document.createElement("div");
@@ -28,8 +27,8 @@ const fetchProducts = async () => {
       <strong>Name: ${product.name}</strong>
       <strong>Price: ${product.price}</strong>
       <strong>Description: ${product.desc || "Đang cập nhật!"}  </strong>
-      <button onclick="">Edit</button>
-      <button onclick="">Delete</button>
+      <button onclick="editProduct(${product.id})">Edit</button>
+      <button onclick="deleteProduct(${product.id})">Delete</button>
       </div>
       <hr />
       `;
@@ -86,6 +85,33 @@ const addProduct = async (e) => {
     await performAction(apiEndpoint, method, newProduct);
   } catch (error) {
     console.log("Error addproduct: ", error);
+  }
+};
+
+const editProduct = async (productId) => {
+  editingProduct = productId;
+  try {
+    const response = await fetch(`${API}/${productId}`);
+    const { name, price, desc } = await response.json();
+    document.getElementById("name").value = name;
+    document.getElementById("price").value = price || "";
+    document.getElementById("desc").value = desc || "";
+  } catch (error) {
+    console.log("Error: ", error);
+  }
+};
+
+const deleteProduct = async (productId) => {
+  const confirmDelete = confirm("Ban co that su muon xoa khong?");
+  if (confirmDelete) {
+    try {
+      await fetch(`${API}/${productId}`, {
+        method: "DELETE",
+      });
+      fetchProducts();
+    } catch (error) {
+      console.log("Error: ", error);
+    }
   }
 };
 

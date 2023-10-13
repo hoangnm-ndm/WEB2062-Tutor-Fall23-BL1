@@ -18,33 +18,16 @@
   },
   "products": [
     {
-      "id": "2",
-      "name": "san pham iphone 15 pro max",
-      "price": 240,
-      "desc": "Mo ta cho san pham iphone 15 pro max"
-    },
-    {
-      "id": "3",
       "name": "san pham 3",
-      "price": 300
-    },
-    {
-      "name": {},
-      "price": {},
-      "desc": {},
-      "id": "k3PgwvR"
-    },
-    {
-      "name": {},
-      "price": {},
-      "desc": {},
-      "id": "2_3Ebw0"
+      "price": "300",
+      "desc": "mo ta san pham",
+      "id": "3"
     },
     {
       "name": "san pham 10",
       "price": "200",
       "desc": "mo ta",
-      "id": "fZhr8mo"
+      "id": "111"
     }
   ]
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Admin</h1>
+      <form action="" id="form">
+        <div class="form-control">
+          <label for="name">Tên sản phẩm:</label>
+          <input type="text" placeholder="San pham..." required id="name" />
+        </div>
+        <div class="form-control">
+          <label for="price">Giá sản phẩm:</label>
+          <input
+            type="number"
+            placeholder="Nhap gia san pham..."
+            required
+            id="price"
+          />
+        </div>
+        <div class="form-control">
+          <label for="desc">Mô tả sản phẩm:</label>
+          <textarea
+            placeholder="Nhap gia san pham..."
+            required
+            id="desc"
+            rows="6"
+          ></textarea>
+        </div>
+        <button type="submit">Add products</button>
+      </form>
+
+      <div id="productList"></div>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
